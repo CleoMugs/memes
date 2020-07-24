@@ -9,4 +9,4 @@ def home(request):
 
 
 def about(request):
-	return HttpResponse('About Page')
+	return render(request, 'accounts/about.html')
