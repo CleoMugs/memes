@@ -33,12 +33,17 @@ class Post(models.Model):
 	date_created = models.DateTimeField(auto_now_add=True,null=True)
 	blogger = models.ForeignKey(Blogger, on_delete=models.CASCADE)
 
+	def __str__(self):
+		return self.id
+
 
 class Comment(models.Model):
 	content = models.TextField()
 	date_created = models.DateTimeField(auto_now_add=True, null=True)
 	post = models.ForeignKey(Post, on_delete=models.CASCADE)
+	comment = models.ManyToManyField(Post, null=True, blank=True, on_delete=models.CASCADE)
 	blogger = models.ForeignKey(Blogger, on_delete=models.CASCADE)
 
-
+	def __str__(self):
+		return self.id
 		
