@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+#from django.DateTimeField import DateTimeField
 
 # Create your models here.
 class Role(models.Model):
@@ -19,7 +20,6 @@ class Blogger(models.Model):
 	role = models.ForeignKey(Role, null=True, on_delete=models.SET_NULL)
 	user = models.OneToOneField(User, null=True, blank=True, on_delete=models.CASCADE)
 	name = models.CharField(max_length=200, null=True)
-	phone = models.CharField(max_length=200, null=True)
 	email = models.CharField(max_length=200, null=True)
 	profile_pic = models.ImageField(default="default.png", null=True, blank=True)
 	date_created = models.DateTimeField(auto_now_add=True, null=True)
@@ -30,13 +30,13 @@ class Blogger(models.Model):
 
 class Post(models.Model):
 	content = models.TextField()
-	date_posted = models.DateTimeField(default=timezone.now, null=True)
+	date_created = models.DateTimeField(auto_now_add=True,null=True)
 	blogger = models.ForeignKey(Blogger, on_delete=models.CASCADE)
 
 
 class Comment(models.Model):
 	content = models.TextField()
-	date_posted = models.DateTimeField(default=timezone.now, null=True)
+	date_created = models.DateTimeField(auto_now_add=True, null=True)
 	post = models.ForeignKey(Post, on_delete=models.CASCADE)
 	blogger = models.ForeignKey(Blogger, on_delete=models.CASCADE)
 
