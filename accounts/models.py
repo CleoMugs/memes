@@ -2,11 +2,6 @@ from django.db import models
 from django.contrib.auth.models import User
 
 # Create your models here.
-class Post(models.Model):
-	content = models.TextField()
-	date_posted = models.DateTimeField(default=timezone.now, null=True)
-	blogger = models.ForeignKey(Blogger, on_delete=models.CASCADE)
-
 class Role(models.Model):
 
 	ROLES =  (
@@ -31,4 +26,19 @@ class Blogger(models.Model):
 
 	def __str__(self):
 		return self.name
+
+
+class Post(models.Model):
+	content = models.TextField()
+	date_posted = models.DateTimeField(default=timezone.now, null=True)
+	blogger = models.ForeignKey(Blogger, on_delete=models.CASCADE)
+
+
+class Comment(models.Model):
+	content = models.TextField()
+	date_posted = models.DateTimeField(default=timezone.now, null=True)
+	post = models.ForeignKey(Post, on_delete=models.CASCADE)
+	blogger = models.ForeignKey(Blogger, on_delete=models.CASCADE)
+
+
 		
