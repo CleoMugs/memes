@@ -45,6 +45,9 @@ def loginPage(request):
 	context = {}
 	return render(request, 'accounts/login.html', context)
 
+def logoutUser(request):
+	return redirect('accounts-login')
+
 
 def home(request):
 	posts = Post.objects.all()
