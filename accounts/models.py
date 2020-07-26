@@ -14,8 +14,8 @@ class Role(models.Model):
 	#default_role = models.BooleanField(default=False)
 	
 	def __str__(self):
-		return self.name
-
+		return str(self.name)
+'''
 class Blogger(models.Model):
 	role = models.ForeignKey(Role, null=True, on_delete=models.SET_NULL)
 	user = models.OneToOneField(User, null=True, blank=True, on_delete=models.CASCADE)
@@ -26,23 +26,22 @@ class Blogger(models.Model):
 
 	def __str__(self):
 		return self.name
-
+'''
 
 class Post(models.Model):
 	content = models.TextField()
-	date_created = models.DateTimeField(auto_now_add=True,null=True)
-	blogger = models.ForeignKey(Blogger, on_delete=models.CASCADE)
+	date_created = models.DateTimeField(auto_now_add=True, null=True)
+	blogger = models.ForeignKey(User, on_delete=models.CASCADE)
 
 	def __str__(self):
-		return self.id
+		return str(self.id)
 
 
 class Comment(models.Model):
 	content = models.TextField()
 	date_created = models.DateTimeField(auto_now_add=True, null=True)
 	post = models.ForeignKey(Post, on_delete=models.CASCADE)
-	blogger = models.ForeignKey(Blogger, on_delete=models.CASCADE)
+	blogger = models.ForeignKey(User, on_delete=models.CASCADE)
 
 	def __str__(self):
-		return self.id
-		
+		return str(self.id)

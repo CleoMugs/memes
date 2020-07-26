@@ -7,12 +7,12 @@ class RoleSerializer(serializers.ModelSerializer):
 		model = Role
 		fields = '__all__' 
 
-
+'''
 class BloggerSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Blogger
 		fields = '__all__' 
-
+'''
 
 class PostSerializer(serializers.ModelSerializer):
 	class Meta:
