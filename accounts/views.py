@@ -1,5 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib import messages
+
 
 from .models import *
 
@@ -13,7 +15,10 @@ def register(request):
 	if request.method == 'POST':
 		form = CreateUserForm(request.POST)
 		if form.is_valid():
-			form.save()
+			#form.save()
+			username = form.cleaned_data.get('username')
+			messages.success(request, f'Account created for {username}!')
+			return redirect('accounts-login')
 
 	context = {'form': form}
 	return render(request, 'accounts/register.html', context)
