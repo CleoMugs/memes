@@ -11,16 +11,30 @@
 				<p class="text-secondary">{{ user.email }}</p>
 			</div>
 		</div>
-		<form method="POST" enctype="multipart/form-data">
-			{% csrf_token %}
-			<fieldset class="form-group">
+		<div class="card card-body">
+			<form method="POST" enctype="multipart/form-data">
+				{% csrf_token %}
+				
 				<legend class="border-bottom mb-4">Profile Bio</legend>
-				{{ user_form }}
-				{{ profile_form }}
-			</fieldset>
-			<div class="form-group">
-				<button class="btn btn-outline-info" type="submit">Update</button>
-			</div>
-		</form>
+				<div class="input-group mb-2">
+					<div class="input-group-append">
+						<span class="input-group-text">{{ user_form.username.label }}</span>
+					</div>
+					{{ user_form.username }}
+				</div>
+				<div class="input-group mb-2">
+					<div class="input-group-append">
+						<span class="input-group-text">{{ user_form.email.label }} </span>
+					</div>
+					{{ user_form.email }}
+				</div>
+				
+					{{ profile_form.profile_pic }}
+				
+				<div class="form-group">
+					<button class="btn btn-outline-info mt-3" type="submit">Update</button>
+				</div>
+			</form>
+		</div>
 	</div>
 {% endblock content %}
