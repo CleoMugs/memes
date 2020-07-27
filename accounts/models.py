@@ -1,8 +1,18 @@
 from django.db import models
 from django.contrib.auth.models import User
-#from django.DateTimeField import DateTimeField
+
 
 # Create your models here.
+
+class Profile(models.Model):
+	user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
+	profile_pic = models.ImageField(default="default.png", upload_to='images')
+	date_created = models.DateTimeField(auto_now_add=True, null=True)
+
+	def __str__(self):
+		return f'{self.user.username} Profile'
+
+
 class Role(models.Model):
 
 	ROLES =  (
@@ -26,6 +36,7 @@ class Blogger(models.Model):
 
 	def __str__(self):
 		return self.name
+
 '''
 
 class Post(models.Model):
