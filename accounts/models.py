@@ -7,6 +7,8 @@ from django.contrib.auth.models import User
 class Profile(models.Model):
 	user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
 	profile_pic = models.ImageField(default="default.png", upload_to='images')
+	location =  models.CharField(max_length=200, null=True, blank=True)
+	occupation =  models.CharField(max_length=200, null=True, blank=True)
 	date_created = models.DateTimeField(auto_now_add=True, null=True)
 
 	def __str__(self):
