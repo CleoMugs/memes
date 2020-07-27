@@ -12,10 +12,7 @@
 			</div-->
 		</div>
 		<div class="card card-body">
-			<form method="POST" enctype="multipart/form-data">
-				{% csrf_token %}
-				
-				<legend class="border-bottom mb-4">Profile Bio</legend>
+				<h4 class="border-bottom mb-2">Profile Bio</h4>
 				<div class="input-group mb-2">
 					<div class="input-group-append">
 					</div>
@@ -23,7 +20,7 @@
 				</div>
 				<div class="input-group mb-2">
 					<div class="input-group-append">
-						{{ user_form.email.label }}:
+						<b>{{ user_form.email.label }}:</b>
 					</div>
 					<a href="">{{ user.email }} </a>
 				</div>
@@ -32,26 +29,26 @@
 					<div class="input-group-append">
 						
 					</div>
-					{{ user.first_name }} {{ user.last_name }}
+					<b>{{ user.first_name }} {{ user.last_name }}</b>
 				</div>
 
 				<div class="input-group mb-2">
 					<div class="input-group-append">
-						Joined:
+						<b>Joined:</b>
 					</div>
-					{{ profile_form.date_created }}
+					{{ user.profile.date_created }}
 				</div>
 
 				<div class="input-group mb-2">
 					<div class="input-group-append">
-						Location:
+						<b>Location:</b>
 					</div>
 					<a href="">{{ user.profile.location }}</a>
 				</div>
 
 				<div class="input-group mb-2">
 					<div class="input-group-append">
-						Occupation:
+						<b>Occupation:</b>
 					</div>
 					{{ user.profile.occupation }}
 				</div>
@@ -60,7 +57,6 @@
 				<div class="form-group">
 					<a class="btn btn-outline-info mt-3" href="{% url 'accounts-editprofile' %}">Edit Profile</a>
 				</div>
-			</form>
 		</div>
 	</div>
 {% endblock content %}
