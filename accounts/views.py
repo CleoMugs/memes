@@ -46,7 +46,7 @@ def loginPage(request):
 	return render(request, 'accounts/login.html', context)
 
 def user(request):
-	
+	#user = User.objects.get
 	context = {}
 	return render(request, 'accounts/user.html', context)
 
