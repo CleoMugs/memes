@@ -8,7 +8,7 @@ from django.contrib.auth import authenticate, login, logout
 from .models import *
 
 # Create your views here.
-from .forms import CreateUserForm
+from .forms import CreateUserForm, UserUpdateForm, ProfileUpdateForm
 
 
 def register(request):
@@ -46,8 +46,10 @@ def loginPage(request):
 	return render(request, 'accounts/login.html', context)
 
 def user(request):
-	#user = User.objects.get
-	context = {}
+	user_form = UserUpdateForm(instance=request.user)
+	profile_form = ProfileUpdateForm(instance=request.user.profile)
+
+	context = {'user_form':user_form, 'profile_form':profile_form}
 	return render(request, 'accounts/user.html', context)
 
 
