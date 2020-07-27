@@ -8,7 +8,7 @@
 			<img class="rounded-circle account-img" src="{{ user.profile.profile_pic.url }}">
 			<div class="media-body">
 				<h2 class="account-heading">{{ user.username }}</h2>
-				<p class="text-secondary">{{ user.email }}</p>
+				<a href=""><p class="text-secondary">{{ user.email }}</p></a>
 			</div>
 		</div>
 		<div class="card card-body">
@@ -18,21 +18,20 @@
 				<legend class="border-bottom mb-4">Profile Bio</legend>
 				<div class="input-group mb-2">
 					<div class="input-group-append">
-						<span class="input-group-text">{{ user_form.username.label }}</span>
+						{{ user_form.username.label }}:
 					</div>
-					{{ user_form.username }}
+					{{ user.username }}
 				</div>
 				<div class="input-group mb-2">
 					<div class="input-group-append">
-						<span class="input-group-text">{{ user_form.email.label }} </span>
+						{{ user_form.email.label }}:
 					</div>
-					{{ user_form.email }}
+					{{ user.email }}
 				</div>
 				
-					{{ profile_form.profile_pic }}
 				
 				<div class="form-group">
-					<button class="btn btn-outline-info mt-3" type="submit">Update</button>
+					<a class="btn btn-default mt-3" href="{% url 'accounts-editprofile' %}">Edit Profile</a>
 				</div>
 			</form>
 		</div>
