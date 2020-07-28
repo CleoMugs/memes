@@ -21,3 +21,12 @@ class ProfileUpdateForm(ModelForm):
 	class Meta:
 		model = Profile
 		fields = ['profile_pic', 'location', 'occupation']
+
+class EditProfileForm(ModelForm):
+	class Meta:
+		model = Profile
+		fields = ['location', 'occupation', 'profile_pic']
+
+		model = User
+		fields = ['first_name', 'last_name']
+

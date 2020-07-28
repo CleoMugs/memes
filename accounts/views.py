@@ -8,7 +8,8 @@ from django.contrib.auth import authenticate, login, logout
 from .models import *
 
 # Create your views here.
-from .forms import CreateUserForm, UserUpdateForm, ProfileUpdateForm
+from .forms import (CreateUserForm, UserUpdateForm, 
+					ProfileUpdateForm, EditProfileForm)
 
 
 def register(request):
@@ -46,6 +47,7 @@ def loginPage(request):
 	return render(request, 'accounts/login.html', context)
 
 def user(request):
+	#profile = Profile.objects.get(id=pk)
 	user_form = UserUpdateForm(request.POST, instance=request.user)
 	profile_form = ProfileUpdateForm(request.POST, 
 									request.FILES, 
@@ -65,7 +67,10 @@ def user(request):
 	return render(request, 'accounts/user.html', context)
 
 def edit_profile(request):
-	context = {}
+	editpro_form = EditProfileForm()
+	
+
+	context = {'editpro_form': editpro_form }
 	return render(request, 'accounts/edit_profile.html', context)
 
 

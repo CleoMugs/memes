@@ -1,11 +1,21 @@
 {% extends 'accounts/base.html' %}
+{% load crispy_forms_tags %}
 {% load static %}
 
 
 {% block content %}
-	<div class="row">
-		<div class="col">	
-			<h1>Edit Profile</h1>
-		</div>	
+		
+	<h1>Edit Your Profile</h1>
+	<div class="card" style="width: 25rem;">
+		<div class="card-body">
+		    <hr>
+
+			
+			{{ editpro_form|crispy }}
+			
+		
+		    <a href="#" class="card-link">Card link</a>
+		    <a href="#" class="card-link">Another link</a>
+	  	</div>
 	</div>
 {% endblock content %}
