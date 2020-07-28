@@ -16,7 +16,8 @@
 	</div>
 	{% for post in posts %}
 		<article class="media content-section">
-			<div class="media-body">
+			<img class="rounded-circle account-img" src="{{ request.user.profile.profile_pic.url }}">
+			<div class="media-body">				
 				<div class="article-metadata">
 					<a class="mr-2" href="{% url 'accounts-user' %}">{{ post.blogger }}</a>
 					<small class="text-muted">{{ post.date_created|date:"N d, Y" }}</small>

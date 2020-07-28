@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
+from django.views.generic import ListView
 from django.contrib import messages
 
 from django.contrib.auth import authenticate, login, logout
@@ -102,14 +103,20 @@ def home(request):
 	posts = Post.objects.all()
 
 	if form.is_valid(): 
-			#user_form.save()
-			form.save()
-			messages.success(request, f'Post created!')
-			print('created')
-			return redirect('accounts-home')
+		form.save()
+		messages.success(request, f'Post created!')
+		print('created')
+		return redirect('accounts-home')
 
 	context = {'posts': posts, 'form':form}
 	return render(request, 'accounts/home.html', context)
+
+
+class PostListView(ListView):
+	model = Post
+	template_name = 'accounts/home.html'
+	context_object_name = 'posts'
+	ordering = ['-date_created']
 
 
 def about(request):
