@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView, CreateView
 from django.contrib import messages
 
 from django.contrib.auth import authenticate, login, logout
@@ -117,6 +117,13 @@ class PostListView(ListView):
 	template_name = 'accounts/home.html'
 	context_object_name = 'posts'
 	ordering = ['-date_created']
+
+class PostDetailView(DetailView):
+	model = Post
+
+class PostCreateView(CreateView):
+	model = Post
+	fields = ['content']
 
 
 def about(request):

@@ -1,0 +1,17 @@
+{% extends 'accounts/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block content %}
+	<article class="media content-section">
+		<img class="rounded-circle account-img" src="{{ object.blogger.profile.profile_pic.url }}">
+		<div class="media-body">				
+			<div class="article-metadata">
+				<a class="mr-2" href="{% url 'accounts-user' %}">{{ object.blogger }}</a>
+				<small class="text-muted">{{ object.date_created|date:"N d, Y" }}</small>
+				<p class="article-content">{{ object.content }}</p>
+			</div>
+		</div>
+	</article>
+
+{% endblock content %}
