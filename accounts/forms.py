@@ -1,6 +1,10 @@
 from django.forms import ModelForm
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+
+from crispy_forms.helper import FormHelper
+
+
 from django import forms
 from .models import Profile
 
@@ -26,7 +30,3 @@ class EditProfileForm(ModelForm):
 	class Meta:
 		model = Profile
 		fields = ['location', 'occupation', 'profile_pic']
-
-		model = User
-		fields = ['first_name', 'last_name']
-

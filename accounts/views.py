@@ -67,10 +67,24 @@ def user(request):
 	return render(request, 'accounts/user.html', context)
 
 def edit_profile(request):
-	editpro_form = EditProfileForm()
-	
+	editpro_form = EditProfileForm(instance=request.user.profile)
+	user_form = UserUpdateForm(instance=request.user)
 
-	context = {'editpro_form': editpro_form }
+	if request.method == 'POST':
+		editpro_form = EditProfileForm(request.POST, instance=request.user.profile)
+		user_form = UserUpdateForm(request.POST,
+							   request.FILES,
+							   request.user
+		)
+
+		if user_form.is_valid and editpro_form.is_valid:
+			user_form.save()
+			editpro_form.save()
+			messages.success(request, f'Your account has been updated !')
+			#return redirect('accounts-user')
+
+
+	context = {'editpro_form': editpro_form, 'user_form':user_form }
 	return render(request, 'accounts/edit_profile.html', context)
 
 
