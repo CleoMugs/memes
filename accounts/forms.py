@@ -16,17 +16,17 @@ class CreateUserForm(UserCreationForm):
 		fields = ['username', 'email', 'password1', 'password2']
 
 
-class UserUpdateForm(ModelForm):	
+class UserUpdateForm(forms.ModelForm):	
 	class Meta:
 		model = User
 		fields = ['username', 'email', 'first_name', 'last_name']
 
-class ProfileUpdateForm(ModelForm):
+class ProfileUpdateForm(forms.ModelForm):
 	class Meta:
 		model = Profile
 		fields = ['profile_pic', 'location', 'occupation']
 
-class EditProfileForm(ModelForm):
+class EditProfileForm(forms.ModelForm):
 	class Meta:
 		model = Profile
 		fields = ['location', 'occupation', 'profile_pic']

@@ -4,8 +4,11 @@
 
 {% block content %}
 	<div class="content-section">
+		{% for message in messages %}
+			<p><center>{{ message }}</center></p>
+		{% endfor %}
 		<div class="media">
-			<img class="rounded-circle account-img" src="{{ user.profile.profile_pic.url }}">
+			<img class="rounded-circle account-img" src="{{ request.user.profile.profile_pic.url }}">
 			<!--div class="media-body">
 				<h2 class="account-heading">{{ user.username }}</h2>
 				<a href=""><p class="text-secondary">{{ user.email }}</p></a>
