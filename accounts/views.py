@@ -124,6 +124,7 @@ class PostDetailView(DetailView):
 class PostCreateView(CreateView):
 	model = Post
 	fields = ['content']
+	#template_name = 'accounts/post_form.html'
 
 
 def about(request):
