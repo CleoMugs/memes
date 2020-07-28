@@ -7,12 +7,6 @@ class RoleSerializer(serializers.ModelSerializer):
 		model = Role
 		fields = '__all__' 
 
-'''
-class BloggerSerializer(serializers.ModelSerializer):
-	class Meta:
-		model = Blogger
-		fields = '__all__' 
-'''
 
 class PostSerializer(serializers.ModelSerializer):
 	class Meta:
@@ -22,5 +16,11 @@ class PostSerializer(serializers.ModelSerializer):
 class CommentSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Comment
+		fields = '__all__' 
+
+
+class ProfileSerializer(serializers.ModelSerializer):
+	class Meta:
+		model = Profile
 		fields = '__all__' 
 		

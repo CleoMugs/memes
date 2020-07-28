@@ -60,19 +60,11 @@ def user(request):
 			profile_form.save()
 			messages.success(request, f'Your account has been updated !')
 			return redirect('accounts-user')
-	'''
-	else:
-		user_form = UserUpdateForm(request.POST, instance=request.user)
-		profile_form = ProfileUpdateForm(request.POST, 
-										request.FILES, 
-										instance=request.user.profile)
-	'''
-
+	
 	context = {'user_form':user_form, 'profile_form':profile_form}
 	return render(request, 'accounts/user.html', context)
 
 def edit_profile(request):
-
 	context = {}
 	return render(request, 'accounts/edit_profile.html', context)
 
