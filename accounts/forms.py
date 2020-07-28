@@ -2,6 +2,8 @@ from django.forms import ModelForm
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
+from .models import Post
+
 from crispy_forms.helper import FormHelper
 
 
@@ -30,3 +32,11 @@ class EditProfileForm(forms.ModelForm):
 	class Meta:
 		model = Profile
 		fields = ['location', 'occupation', 'profile_pic']
+
+
+
+class PostForm(ModelForm):
+	class Meta:
+		model = Post
+		fields = ['content']
+		content= forms.CharField(widget=forms.Textarea(attrs={"rows":5, "cols":20}))

@@ -9,7 +9,9 @@ from .models import *
 
 # Create your views here.
 from .forms import (CreateUserForm, UserUpdateForm, 
-					ProfileUpdateForm, EditProfileForm)
+					ProfileUpdateForm, EditProfileForm,
+					PostForm
+)
 
 
 def register(request):
@@ -96,8 +98,17 @@ def logoutUser(request):
 
 
 def home(request):
+	form = PostForm()
 	posts = Post.objects.all()
-	context = {'posts': posts}
+
+	if form.is_valid(): 
+			#user_form.save()
+			form.save()
+			messages.success(request, f'Post created!')
+			print('created')
+			return redirect('accounts-home')
+
+	context = {'posts': posts, 'form':form}
 	return render(request, 'accounts/home.html', context)
 
 
