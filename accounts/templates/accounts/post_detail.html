@@ -9,9 +9,18 @@
 			<div class="article-metadata">
 				<a class="mr-2" href="{% url 'accounts-user' %}">{{ object.blogger }}</a>
 				<small class="text-muted">{{ object.date_created|date:"N d, Y" }}</small>
+
 				<p class="article-content">{{ object.content }}</p>
+				<div>
+					{%  if object.blogger == user %}
+						<a class="btn btn-danger mt-1 mb-1" href="{% url 'post-delete' object.id %}">Delete</a>
+					{% endif %}
+				</div>
 			</div>
 		</div>
 	</article>
+	<div>
+		<a class="mr-5" href="{% url 'accounts-home' %}"><i class="fa fa-home fa-2x">Get Back</i></a>
+	</div>
 
 {% endblock content %}
