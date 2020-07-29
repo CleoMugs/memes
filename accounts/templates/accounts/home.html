@@ -25,8 +25,10 @@
 		</article-->
 
 		<div class="card content-section" style="width: 100%;">
-			<img class="rounded-circle account-img" src="{{ post.blogger.profile.profile_pic.url }}">
+			
 	  		<div class="card-body">
+	  			<img class="rounded-circle account-img" src="{{ post.blogger.profile.profile_pic.url }}">
+	  			
 	  			<a class="mr-2" href="{% url 'accounts-user' %}">@{{ post.blogger }}</a>
 	    		<small class="card-title">{{ post.date_created|date:"N d, Y" }}</small>
 	    		

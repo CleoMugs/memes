@@ -124,7 +124,11 @@ class PostDetailView(DetailView):
 class PostCreateView(CreateView):
 	model = Post
 	fields = ['content']
-	#template_name = 'accounts/post_form.html'
+	success_url = '/'
+	
+	def form_valid(self, form):
+		form.instance.blogger = self.request.user
+		return super().form_valid(form)
 
 
 def about(request):
