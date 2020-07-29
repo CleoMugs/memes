@@ -123,6 +123,7 @@ class PostListView(ListView):
 	template_name = 'accounts/home.html'
 	context_object_name = 'posts'
 	ordering = ['-date_created']
+	paginate_by = 2
 
 class PostDetailView(DetailView):
 	model = Post
