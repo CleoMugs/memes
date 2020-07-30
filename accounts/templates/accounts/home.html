@@ -13,7 +13,7 @@
 	  			<img class="rounded-circle account-img" src="{{ post.blogger.profile.profile_pic.url }}">
 
 	  			<a class="mr-2" href="{% url 'user-posts' post.blogger.username %}">@{{ post.blogger }}</a>
-	    		<small class="card-title">{{ post.date_created|date:"N d, Y" }}</small>
+	    		<small class="card-title post-date">{{ post.date_created|date:"N d, Y" }}</small>
 	    		
 	    		<p class="card-text">{{ post.content }}</p>
 	    		<div class="form-group justify-content-end">
@@ -26,8 +26,27 @@
 				
 	  		</div>
 		</div>
-
 	{% endfor %}
+
+<!--START--->
+    {% for post in posts %}
+    <li class="post">
+        <div class="post-thumbnail">
+            <a href="{% url 'user-posts' post.blogger.username %}" >
+                <img class="rounded-circle profile-thumbnail" src="{{ post.blogger.profile.profile_pic.url }}">@{{ post.blogger }}
+            </a>
+        </div>
+
+         <div class="post-content">
+            <div class="post-date">{{ post.date_created|date:"N d, Y" }}</div>
+            
+        </div>
+        
+    </li>
+    {% endfor %}
+</ul>
+<!--END--->
+	
 	{% if is_paginated %}
 
 		{% if page_obj.has_previous %}

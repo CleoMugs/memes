@@ -90,6 +90,22 @@ a.article-title:hover  {
 }
 
 
+/**  customized **/
+div.post-date {
+    float: right;
+}
+
+.profile-thumbnail {
+    position: absolute;
+}
+
+div.post-thumbnail {
+    position: absolute;
+}
+
+div.post-content {
+    margin-left: 48px;
+    min-height: 48px;
 
 
 
