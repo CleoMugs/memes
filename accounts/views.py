@@ -1,4 +1,5 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.models import User
 from django.contrib.auth.mixins import (LoginRequiredMixin,
 										UserPassesTestMixin,
 
@@ -148,6 +149,16 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 			return True
 		return False
 
+class UserPostListView(ListView):
+	model = Post
+	template_name = 'accounts/user_posts.html'
+	context_object_name = 'posts'
+	#ordering = ['-date_created']
+	paginate_by = 2
+
+	def get_query_set(self):
+		user = get_object_or_404(User, username=self.kwargs.get('username'))
+		return Post.objects.filter(blogger=user).order_by('-date_created')
 
 def about(request):
 	return render(request, 'accounts/about.html')
