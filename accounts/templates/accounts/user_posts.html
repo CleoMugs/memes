@@ -10,7 +10,7 @@
 	  		<div class="card-body">
 	  			<img class="rounded-circle account-img" src="{{ post.blogger.profile.profile_pic.url }}">
 
-	  			<a class="mr-2" href="{% url 'user_posts' post.blogger.username %}">@{{ post.blogger }}</a>
+	  			<a class="mr-2" href="{% url 'user-posts' post.blogger.username %}">@{{ post.blogger }}</a>
 	    		<small class="card-title">{{ post.date_created|date:"N d, Y" }}</small>
 	    		
 	    		<p class="card-text">{{ post.content }}</p>
