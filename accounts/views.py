@@ -18,7 +18,7 @@ from .models import *
 # Create your views here.
 from .forms import (CreateUserForm, UserUpdateForm, 
 					ProfileUpdateForm, EditProfileForm,
-					PostForm
+					PostForm, CommentForm
 )
 
 
@@ -170,6 +170,19 @@ class CommentListView(ListView):
 	#paginate_by = 2
 '''
 
+def comment(request, pk):
+	#profile = Profile.objects.get(id=pk)
+	comment_form = CommentForm(request.POST, instance=request.user)
+	if request.method == 'POST':
+		comment_form = UserUpdateForm(request.POST, instance=request.user)
+		
+		if comment_form.is_valid():
+			comment_form.save()
+			#messages.success(request, f'Your account has been updated !')
+			return redirect('accounts-home')
+	
+	context = {'comment_form':comment_form}
+	return render(request, 'accounts/comments.html', context)
 
 
 def about(request):
