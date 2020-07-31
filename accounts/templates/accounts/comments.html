@@ -1,0 +1,31 @@
+{% extends 'accounts/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block content %}
+<div class="container content-section">	
+	<div class="row">
+		<div class="col-2">
+	    	<div class="post-thumbnail">
+	            <a href="{% url 'user-posts' post.blogger.username %}" >
+	                <img class="rounded-circle profile-thumbnail" class="img-fluid"  alt="Responsive Image" 
+ 					width="80%" height="80%" src="{{ post.blogger.profile.profile_pic.url }}">
+	            </a>
+        	</div>
+		</div>
+
+		<div class="col">	
+         	<div>
+         		<a href="{% url 'user-posts' post.blogger.username %}">@{{ post.blogger }}</a>
+         		 <div class="post-date">{{ post.date_created|date:"N d, Y" }}</div>
+         	</div>
+	        <hr>
+            <div class="post-body">
+            	<p>{{ post.content }}</p>		
+            </div>
+            <hr>
+		</div>		
+	</div>	    	
+</div>
+
+{% endblock content %}

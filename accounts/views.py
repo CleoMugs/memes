@@ -160,5 +160,17 @@ class UserPostListView(ListView):
 		user = get_object_or_404(User, username=self.kwargs.get('username'))
 		return Post.objects.filter(blogger=user).order_by('-date_created')
 
+
+#comments
+class CommentListView(ListView):
+	model = Comment
+	template_name = 'accounts/comments.html'
+	#context_object_name = 'comments'
+	#ordering = ['-date_created']
+	#paginate_by = 2
+
+
+
+
 def about(request):
 	return render(request, 'accounts/about.html')
