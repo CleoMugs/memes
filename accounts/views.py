@@ -170,7 +170,5 @@ class CommentListView(ListView):
 	#paginate_by = 2
 
 
-
-
 def about(request):
 	return render(request, 'accounts/about.html')
