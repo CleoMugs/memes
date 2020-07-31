@@ -165,7 +165,7 @@ class UserPostListView(ListView):
 class CommentListView(ListView):
 	model = Comment
 	template_name = 'accounts/comments.html'
-	#context_object_name = 'comments'
+	context_object_name = 'comments'
 	#ordering = ['-date_created']
 	#paginate_by = 2
 

@@ -39,7 +39,7 @@
 							<a class="btn btn-outline-info btn-sm" href="{% url 'post-detail' post.id %}">View Post</a>
 						</div>
 							<hr>
-				  			<a class="mr-5" href=""><i class="fa fa-comment fa-lg" aria-hidden="true"></i></a>
+				  			<a class="mr-5" href="{% url 'post-comments' post.id %}"><i class="fa fa-comment fa-lg" aria-hidden="true"></i></a>
 				    		<a class="mr-5" href=""><i class="fa fa-star fa-lg" aria-hidden="true"></i></a>
 				    		<a class="mr-5" href=""><i class="fa fa-heart fa-lg" aria-hidden="true"></i></a>   
 
