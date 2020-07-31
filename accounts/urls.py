@@ -16,7 +16,7 @@ urlpatterns = [
 
     #path('post/<int:pk>/comments/', CommentListView.as_view(), name='post-comments'),
 
-    path('comments/', views.comment, name='comment'),
+    path('comments/', views.comment, name='post-comments'),
 
 
     path('register/', views.register, name='accounts-register'),
