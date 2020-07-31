@@ -170,8 +170,9 @@ class CommentListView(ListView):
 	#paginate_by = 2
 '''
 
-def comment(request, pk):
-	#profile = Profile.objects.get(id=pk)
+def comment(request):
+	comments = Comment.objects.get(id=pk)
+	posts = Post.objects.get(id=pk)
 	comment_form = CommentForm(request.POST, instance=request.user)
 	if request.method == 'POST':
 		comment_form = UserUpdateForm(request.POST, instance=request.user)
