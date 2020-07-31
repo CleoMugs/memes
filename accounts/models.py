@@ -48,5 +48,10 @@ class Comment(models.Model):
 	post = models.ForeignKey(Post, on_delete=models.CASCADE)
 	blogger = models.ForeignKey(User, on_delete=models.CASCADE)
 
+
+	class Meta:
+		ordering = ['-date_created']
+
+
 	def __str__(self):
 		return str(self.id)

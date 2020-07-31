@@ -2,7 +2,7 @@ from django.forms import ModelForm
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
-from .models import Post
+from .models import Post, Comment
 
 from crispy_forms.helper import FormHelper
 
@@ -40,3 +40,10 @@ class PostForm(ModelForm):
 		model = Post
 		fields = ['content']
 		content= forms.CharField(widget=forms.Textarea(attrs={"rows":5, "cols":20}))
+
+
+
+class CommentForm(forms.ModelForm):
+	class Meta:
+		model = Comment
+		fields = ['content']
